@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="card shadow p-4">
+    <h2 class="mb-3">Salary Prediction</h2>
+    <p class="text-muted">Choose values below to estimate a predicted salary.</p>
+
+    <form action="/predict" method="POST">
+
+        <div class="mb-3">
+            <label class="form-label">Age</label>
+            <select name="age" class="form-select" required>
+                <option value="">Choose a value</option>
+                <option value="7">7</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Gender</label>
+            <select name="gender" class="form-select" required>
+                <option value="">Choose a value</option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Country</label>
+            <select name="country" class="form-select" required>
+                <option value="">Choose a value</option>
+                <option value="55">55</option>
+                <option value="30">30</option>
+                <option value="10">10</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Highest Degree</label>
+            <select name="highest_deg" class="form-select" required>
+                <option value="">Choose a value</option>
+                <option value="1">High School</option>
+                <option value="2">Bachelor's</option>
+                <option value="3">Master's</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Coding Experience</label>
+            <select name="coding_exp" class="form-select" required>
+                <option value="">Choose a value</option>
+                <option value="1">Beginner</option>
+                <option value="4">Intermediate</option>
+                <option value="8">Advanced</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Current Title</label>
+            <select name="title" class="form-select" required>
+                <option value="">Choose a value</option>
+                <option value="5">Analyst</option>
+                <option value="13">Developer</option>
+                <option value="20">Manager</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Company Size</label>
+            <select name="company_size" class="form-select" required>
+                <option value="">Choose a value</option>
+                <option value="1">Small</option>
+                <option value="2">Medium</option>
+                <option value="3">Large</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Predict Salary</button>
+    </form>
+
+    {% if prediction %}
+        <div class="alert alert-success mt-4">
+            <strong>Predicted Salary:</strong> ${{ "{:,.2f}".format(prediction) }}
+        </div>
+    {% endif %}
+</div>
+
+{% endblock %}
